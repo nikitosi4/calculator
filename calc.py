@@ -62,7 +62,7 @@ win.config(bg="black")
 
 calc = Entry(win, justify="right", font="arial 25")
 calc.insert(0, "0")
-calc.grid(row=0, column=0, columnspan=4, stick="we", padx=5)
+calc.grid(row=0, column=0, columnspan=3, stick="we", padx=5)
 
 
 i = 1
