@@ -56,29 +56,34 @@ def make_button_eq(operation):
 
 win = Tk()
 win.title("Калькулятор")
-win.geometry("456x220")
+win.geometry("442x247")
 win.config(bg="black")
 
 
-calc = Entry(win, justify="right", font="arial 25")
+calc = Entry(win, justify="right", font="arial 25", bd=4)
 calc.insert(0, "0")
-calc.grid(row=0, column=0, columnspan=3, stick="we", padx=5)
+calc.grid(row=0, column=0, columnspan=3, stick="we")
 
 
 i = 1
 for row in range(3):
     for column in range(3):
-        make_button_dig(i).grid(row=row+1, column=column, sticky="wens", padx=5, pady=5)
+        make_button_dig(i).grid(row=row+2, column=column, sticky="wens", padx=3, pady=3)
         i += 1
 
-make_button_dig("0").grid(row=4, column=0, sticky="wens", padx=5, pady=5)
-make_button_op("+").grid(row=1, column=3, sticky="wens", padx=5, pady=5)
-make_button_op("-").grid(row=2, column=3, sticky="wens", padx=5, pady=5)
-make_button_op("*").grid(row=3, column=3, sticky="wens", padx=5, pady=5)
-make_button_op("/").grid(row=4, column=3, sticky="wens", padx=5, pady=5)
-make_button_eq("=").grid(row=4, column=2, sticky="wens", padx=5, pady=5)
-tk.Button(win, text=("C"), bd=4, command=del_all).grid(row=4, column=1)
-tk.Button(win, text=("⌫"), bd=4, command=del_last).grid(row=0, column=3)
+
+tk.Button(win, text="⌫", bd=4, command=del_last).grid(row=0, column=3, padx=3, pady=3)
+tk.Button(win, text="C", bd=4, command=del_all).grid(row=1, column=0, padx=3, pady=3)
+tk.Button(win, text="()", bd=4).grid(row=1, column=1, padx=3, pady=3)
+tk.Button(win, text="%", bd=4).grid(row=1, column=2, padx=3, pady=3)
+make_button_op("/").grid(row=1, column=3, padx=3, pady=3)
+make_button_op("*").grid(row=2, column=3, padx=3, pady=3)
+make_button_op("-").grid(row=3, column=3, padx=3, pady=3)
+make_button_op("+").grid(row=4, column=3, padx=3, pady=3)
+tk.Button(win, text="+-", bd=4).grid(row=5, column=0, padx=3, pady=3)
+make_button_dig("0").grid(row=5, column=1, padx=3, pady=3)
+tk.Button(win, text=".", bd=4).grid(row=5, column=2, padx=3, pady=3)
+make_button_eq("=").grid(row=5, column=3, padx=3, pady=3)
 
 
 win.mainloop()
