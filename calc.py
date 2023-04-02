@@ -26,6 +26,22 @@ def calculate():
     calc.insert(0, eval(value))
 
 
+def del_all():
+    calc.delete(0, END)
+    calc.insert(0, "0")
+
+
+def del_last():
+    value = calc.get()
+
+    if len(value) != 1 and value != 0:
+        value = value[:-1]
+    elif len(value) == 1:
+        value = "0"
+    calc.delete(0, END)
+    calc.insert(0, value)
+
+
 def make_button_dig(digit):
     return tk.Button(text=f"{digit}", bd=4, command=lambda: add_digit(digit))
 
@@ -61,6 +77,8 @@ make_button_op("-").grid(row=2, column=3, sticky="wens", padx=5, pady=5)
 make_button_op("*").grid(row=3, column=3, sticky="wens", padx=5, pady=5)
 make_button_op("/").grid(row=4, column=3, sticky="wens", padx=5, pady=5)
 make_button_eq("=").grid(row=4, column=2, sticky="wens", padx=5, pady=5)
+tk.Button(win, text=("C"), bd=4, command=del_all).grid(row=4, column=1)
+tk.Button(win, text=("⌫"), bd=4, command=del_last).grid(row=0, column=3)
 
 
 win.mainloop()
